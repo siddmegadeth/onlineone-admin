@@ -2,6 +2,7 @@
 <html lang="en">
 <script src="plugins/winDevice.js"></script>
 <script src="plugins/angular-1.7.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js"></script>
 
 <head>
     <meta charset="utf-8">
@@ -22,7 +23,6 @@
 </head>
 
 <body ng-cloak ng-controller="globalCtrl">
-    <!-- Fixed navbar -->
     <div class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
@@ -41,49 +41,15 @@
             <!--/.nav-collapse -->
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-sm-3 col-md-3">
-                <input type="search" placeholder="Search " ng-model="custSearch.$" class="form-control" />
-            </div>
-            <div class="col-lg-2 col-sm-2 col-md-2">
-                <button class="btn btn-primary" ng-click="getCustomerInit()">Re-Load</button>
-            </div>
-            <div class="col-lg-7 col-sm-7 col-md-7">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 col-sm-12 col-md-12">
-            <div class="table-responsive">
-                <table class="table table-condensed table-hover" ng-if="totalCustomerRegistered.length!=0">
-                    <thead>
-                        <tr>
-                            <th><a href ng-click="orderByType('fullname')">Full Name</a></th>
-                            <th><a href ng-click="orderByType('email')">E-Mail</a></th>
-                            <th><a href ng-click="orderByType('message')">Message</a></th>
-                            <th><a href ng-click="orderByType('subject')">Subject</a></th>
-                            <th><a href ng-click="orderByType('created_at')">Creation Date</a></th>
-                            <th><a href>Action</a></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="cust in totalCustomerRegistered|orderBy:orderByValue|filter:custSearch:strict">
-                            <td>{{cust.fullname}}</td>
-                            <td>{{cust.email}}</td>
-                            <td>{{cust.message}}</td>
-                            <td>{{cust.subject}}</td>
-                            <td>{{cust.created_at|date :'longDate'}}</td>
-                            <td>
-                                <button class="btn btn-danger" ng-click="performAction(cust)">Action</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    </div>
+    <!-- Fixed navbar -->
+    <uib-tabset  justified="true" type="pills">
+        <uib-tab index="0" heading="Customer New Lead">
+            <div ng-include="'components/customer-lead/customer-lead.html'"></div>
+            <!--  -->
+        </uib-tab>
+        <uib-tab index="1" heading="SJ">Analytics</uib-tab>
+        <uib-tab index="2" heading="Long Justified">Long Labeled Justified content</uib-tab>
+    </uib-tabset>
 </body>
 <!-- / copyrights -->
 <!-- JavaScript Libraries -->

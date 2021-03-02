@@ -1,6 +1,6 @@
 "use strict";
 var DI = [
-
+    'ui.bootstrap'
 ];
 var win = new winDevice("myApp", DI); //Bootstrap Cordova Or Browser Based App .no ng-app Required
 var app = win.device(); // init App
@@ -58,11 +58,11 @@ app.controller('globalCtrl', ['$scope', 'customerLead', '$timeout', function($sc
         $scope.getCustomerInit();
     });
 
-    $scope.performAction = function(action){
+    $scope.performAction = function(action) {
         log(action);
     };
 
-    $scope.orderByType = function(value){
+    $scope.orderByType = function(value) {
         $scope.orderByValue = value;
     };
     $scope.getCustomerInit = function() {
