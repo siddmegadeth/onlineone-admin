@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="plugins/winDevice.js"></script>
+<script src="plugins/angular-1.7.9/angular.min.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>onlineone.Admin Console</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <meta name="description" content="create your website in less than 15mins. onlineone is a goto platform to create next generation websites for business . create website, add e-commerce, add products and services. add your own personal feed to your website. drive sales and customer engagement " />
+    <!-- Favicons -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Libraries CSS Files -->
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body ng-cloak ng-controller="globalCtrl">
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href><b>ONLINEONE ADMIN CONSOLE</b></a>
+            </div>
+            <!--  <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" class="smoothscroll">Already a member?</a></li>
+                </ul>
+            </div> -->
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-sm-3 col-md-3">
+                <input type="search" placeholder="Search " ng-model="custSearch.$" class="form-control" />
+            </div>
+            <div class="col-lg-2 col-sm-2 col-md-2">
+                <button class="btn btn-primary" ng-click="getCustomerInit()">Re-Load</button>
+            </div>
+            <div class="col-lg-7 col-sm-7 col-md-7">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-md-12">
+            <div class="table-responsive">
+                <table class="table table-condensed table-hover" ng-if="totalCustomerRegistered.length!=0">
+                    <thead>
+                        <tr>
+                            <th><a href ng-click="orderByType('fullname')">Full Name</a></th>
+                            <th><a href ng-click="orderByType('email')">E-Mail</a></th>
+                            <th><a href ng-click="orderByType('message')">Message</a></th>
+                            <th><a href ng-click="orderByType('subject')">Subject</a></th>
+                            <th><a href ng-click="orderByType('created_at')">Creation Date</a></th>
+                            <th><a href>Action</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="cust in totalCustomerRegistered|orderBy:orderByValue|filter:custSearch:strict">
+                            <td>{{cust.fullname}}</td>
+                            <td>{{cust.email}}</td>
+                            <td>{{cust.message}}</td>
+                            <td>{{cust.subject}}</td>
+                            <td>{{cust.created_at|date :'longDate'}}</td>
+                            <td>
+                                <button class="btn btn-danger" ng-click="performAction(cust)">Action</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<!-- / copyrights -->
+<!-- JavaScript Libraries -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/php-mail-form/validate.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<!-- Template Main Javascript File -->
+<script src="js/main.js"></script>
+<script src="init.js"></script>
+
+</html>
