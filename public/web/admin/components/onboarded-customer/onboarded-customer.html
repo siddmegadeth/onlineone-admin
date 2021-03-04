@@ -33,7 +33,7 @@
                         <tr ng-repeat="cust in totalOnboardedCustomers|orderBy:orderByValue|filter:custSearchOnboard:strict">
                             <td>{{cust.fullname}}</td>
                             <td><a href>{{cust.email}}</a></td>
-                            <td><img ng-src="{{cust.picture}}" style="width: 120px" /></td>
+                            <td><img ng-src="{{cust.picture}}" style="width: 120px;height: 124px;object-fit: cover;" /></td>
                             <td>{{cust.subscription_type}}</td>
                             <td>{{cust.paymentReceived}}</td>
                             <td>{{cust.isBusinessCreated}}</td>
