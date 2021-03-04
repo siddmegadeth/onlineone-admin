@@ -1,0 +1,52 @@
+<!--  -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-sm-3 col-md-3">
+            <input type="search" placeholder="Search " ng-model="custSearchOnboard.$" class="form-control" />
+        </div>
+        <div class="col-lg-2 col-sm-2 col-md-2">
+            <button class="btn btn-primary" ng-click="getOnboardedInit()">Re-Load</button>
+        </div>
+        <div class="col-lg-7 col-sm-7 col-md-7">
+            Total {{totalOnboardedCustomers.length}} Onboarded
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-md-12">
+            <div class="">
+                <table class="table table-condensed table-hover table-striped" ng-if="totalCustomerRegistered.length!=0">
+                    <thead>
+                        <tr>
+                            <th><a href ng-click="orderByType('fullname')">Full Name</a></th>
+                            <th><a href ng-click="orderByType('email')">E-Mail</a></th>
+                            <th><a href ng-click="orderByType('picture')">Picture</a></th>
+                            <th><a href ng-click="orderByType('subscription_type')">Subscription Type</a></th>
+                            <th><a href ng-click="orderByType('paymentReceived')">Payment Received</a></th>
+                            <th><a href ng-click="orderByType('isBusinessCreated')">Is Business Ready</a></th>
+                            <th><a href ng-click="orderByType('freemium_start_date')">Trial Start Date</a></th>
+                            <th><a href ng-click="orderByType('freemium_end_date')">Trial End Date</a></th>
+                            <th><a href ng-click="orderByType('created_at')">Date</a></th>
+                            <th><a href>Action</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="cust in totalOnboardedCustomers|orderBy:orderByValue|filter:custSearchOnboard:strict">
+                            <td>{{cust.fullname}}</td>
+                            <td><a href>{{cust.email}}</a></td>
+                            <td><img ng-src="{{cust.picture}}" style="width: 120px" /></td>
+                            <td>{{cust.subscription_type}}</td>
+                            <td>{{cust.paymentReceived}}</td>
+                            <td>{{cust.isBusinessCreated}}</td>
+                            <td>{{cust.freemium_start_date|date :'medium'}}</td>
+                            <td>{{cust.freemium_end_date|date :'medium'}}</td>
+                            <td>{{cust.created_at|date :'medium'}}</td>
+                            <td>
+                                <button class="btn btn-danger" ng-click="performAction(cust)">Action</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
